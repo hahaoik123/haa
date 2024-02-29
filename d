@@ -1,16 +1,23 @@
 -- Script 1: HeadSize Modifier
 _G.HeadSize = 20
 _G.Disabled = true
+_G.OriginalSize = Vector3.new(2, 2, 1)
 
 local function modifyCharacters(folder)
     for _, child in ipairs(folder:GetChildren()) do
         if child:IsA("Model") and child.Name == "AI-Normal" and child ~= game.Players.LocalPlayer.Character then
             pcall(function()
-                child.HumanoidRootPart.Size = Vector3.new(_G.HeadSize, _G.HeadSize, _G.HeadSize)
-                child.HumanoidRootPart.Transparency = 0.5
-                child.HumanoidRootPart.BrickColor = BrickColor.new("Bright red")
-                child.HumanoidRootPart.Material = "Neon"
-                child.HumanoidRootPart.CanCollide = true
+                local humanoidRootPart = child.HumanoidRootPart
+                humanoidRootPart.Size = Vector3.new(_G.HeadSize, _G.HeadSize, _G.HeadSize)
+                humanoidRootPart.Transparency = 0.5
+                humanoidRootPart.BrickColor = BrickColor.new("Bright red")
+                humanoidRootPart.Material = "Neon"
+                humanoidRootPart.CanCollide = true
+
+                -- Connect a function to the Died event of the Humanoid
+                child:WaitForChild("Humanoid").Died:Connect(function()
+                    humanoidRootPart.Size = _G.OriginalSize
+                end)
             end)
         elseif child:IsA("Folder") then
             modifyCharacters(child)
