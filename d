@@ -9,7 +9,7 @@ local function modifyCharacters(folder)
             pcall(function()
                 local humanoidRootPart = child.HumanoidRootPart
                 humanoidRootPart.Size = Vector3.new(_G.HeadSize, _G.HeadSize, _G.HeadSize)
-                humanoidRootPart.Transparency = 0.5
+                humanoidRootPart.Transparency = 0.95
                 humanoidRootPart.BrickColor = BrickColor.new("Bright red")
                 humanoidRootPart.Material = "Neon"
                 humanoidRootPart.CanCollide = true
